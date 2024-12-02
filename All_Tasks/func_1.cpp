@@ -34,7 +34,19 @@ std::string AnyNumberToReverse(long long num) {
 void InputValues1() {
     long long number;
     std::cout << "Please enter a integer number: ";
-    std::cin >> number; // TODO
+    while (true) {
+            std::cin >> number;
+            if (std::cin.fail()) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Invalid input. Please enter a valid integer: ";
+            } else if (std::cin.peek() != '\n') {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Invalid input. Please enter a valid integer: ";
+            } else {
+                break;
+            }
+        }
     
     std::string binaryRepresentation;
     binaryRepresentation = AnyNumberToReverse(number);
@@ -47,7 +59,9 @@ void AuthorInfo() {
 }
 
 void ExplainTask1() {
-    std::cout << "/n"; // TODO
+    std::cout << "You are given a number in its natural form. Convert this number to its ones' complement form (invert all bits).\n"
+              << "Ensure that the program handles both positive and negative numbers. The length of the number is not limited.\n";
+
 }
 
 void DisplayMenuTask() {

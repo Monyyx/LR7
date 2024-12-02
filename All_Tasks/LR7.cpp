@@ -187,16 +187,15 @@ int choice;
                 break;
             }
         }
-        
         switch (choice) {
             case 1:
             //ExplainTask5();
             break;
             case 2:
-                AuthorInfo();
+            AuthorInfo();
             break;
             case 3:
-                //InputValue5();
+            //InputValue5();
             break;
             case 0:
                 std::cout << "Exiting the program.\n";
@@ -231,10 +230,10 @@ int main() {
             if (std::cin.fail() || choice < 0 || choice > 4) {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Invalid input. Please enter a valid option (0-4): ";
+                std::cout << "Invalid input. Please enter a valid option (0-6): ";
             } else if (std::cin.peek() != '\n') {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Invalid input. Please enter a valid option (0-4): ";
+                std::cout << "Invalid input. Please enter a valid option (0-6): ";
             } else {
                 break;
             }
