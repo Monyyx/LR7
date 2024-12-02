@@ -1,8 +1,12 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
+#include "func_1.h"
 
-// Функция для перевода числа в двоичное представление
+void reverse (std::string result) {
+    size_t size = result.length();
+    for (size_t i = 0; i < result.length() / 2; ++i){
+        std::swap(result[i], result[size - 1 - i]);
+    }
+}
+
 std::string toBinary(long long num) {
     if (num == 0) return "0";
     std::string result;
@@ -10,38 +14,47 @@ std::string toBinary(long long num) {
         result += (num % 2 == 0 ? "0" : "1");
         num /= 2;
     }
-    std::reverse(result.begin(), result.end());
+    reverse(result);
     return result;
 }
 
-// Функция для перевода положительных чисел в обратный код
-std::string positiveToBinary(long long num) {
-    return toBinary(num);
-}
-
-// Функция для перевода отрицательных чисел в обратный код
-std::string negativeToBinary(long long num) {
-    std::string binary = toBinary(-num);
-    // Инверсия всех битов
-    for (char &c : binary) {
-        c = (c == '0') ? '1' : '0';
+std::string AnyNumberToReverse(long long num) {
+    if (num >= 0)  return "0" + toBinary(num);
+    else {
+        std::string binary = toBinary(-num);
+        for(char &c : binary){
+            c = (c == '0') ? '1' : '0';
+        }
+        return "1" + binary;
     }
-    return "1" + binary;
 }
 
-int main() {
+
+
+void InputValues1() {
     long long number;
-    std::cout << "Введите число: ";
-    std::cin >> number;
+    std::cout << "Please enter a integer number: ";
+    std::cin >> number; // TODO
     
     std::string binaryRepresentation;
-    if (number >= 0) {
-        binaryRepresentation = "0" + positiveToBinary(number);
-    } else {
-        binaryRepresentation = negativeToBinary(number);
-    }
+    binaryRepresentation = AnyNumberToReverse(number);
     
-    std::cout << "Двоичное представление с знаковым битом: " << binaryRepresentation << std::endl;
+    std::cout << "Binary representation of your number is: " << binaryRepresentation << std::endl;
+}
 
-    return 0;
+void AuthorInfo() {
+    std::cout << "Completed by: Matvei Khadorik\n";
+}
+
+void ExplainTask1() {
+    std::cout << "/n"; // TODO
+}
+
+void DisplayMenuTask() {
+    std::cout << "--- Context menu ---\n"
+              << "1. Task description\n"
+              << "2. Author information\n"
+              << "3. Enter Control Values\n"
+              << "0. Exit\n"
+              << "Choose an option: ";
 }
