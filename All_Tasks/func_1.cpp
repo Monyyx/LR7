@@ -1,8 +1,8 @@
 #include "func_1.h"
 
-void reverse (std::string result) {
+void reverse (std::string &result) {
     size_t size = result.length();
-    for (size_t i = 0; i < result.length() / 2; ++i){
+    for (size_t i = 0; i < size / 2; ++i){
         std::swap(result[i], result[size - 1 - i]);
     }
 }
@@ -17,6 +17,7 @@ std::string toBinary(long long num) {
     reverse(result);
     return result;
 }
+
 
 std::string AnyNumberToReverse(long long num) {
     if (num >= 0)  return "0" + toBinary(num);

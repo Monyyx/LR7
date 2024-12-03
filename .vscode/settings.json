@@ -1,6 +1,7 @@
 {
     "cmake.ignoreCMakeListsMissing": true,
     "files.associations": {
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "iostream": "cpp"
     }
 }

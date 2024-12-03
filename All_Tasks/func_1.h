@@ -11,10 +11,6 @@ void InputValues1();
 
 void DisplayMenuTask();
 
-void reverse (std::string result);
-
 std::string AnyNumberToReverse(long long num);
-
-std::string toBinary(long long num);
 
 void inputCheck (long long &number);

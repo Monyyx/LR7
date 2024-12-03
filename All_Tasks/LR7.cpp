@@ -71,13 +71,13 @@ int choice;
         }
         switch (choice) {
             case 1:
-                //ExplainTask2();
+                ExplainTask2();
                 break;
             case 2:
                 AuthorInfo();
                 break;
             case 3:
-                //InputValue2();
+                InputValues2();
                 break;
             case 0:
                 std::cout << "Exiting the program.\n";
