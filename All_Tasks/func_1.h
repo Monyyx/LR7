@@ -1,5 +1,6 @@
 #pragma once 
 #include <string>
+#include <limits>
 #include <iostream>
 
 void AuthorInfo();
@@ -15,3 +16,5 @@ void reverse (std::string result);
 std::string AnyNumberToReverse(long long num);
 
 std::string toBinary(long long num);
+
+void inputCheck (long long &number);

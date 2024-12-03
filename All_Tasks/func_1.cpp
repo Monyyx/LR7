@@ -29,11 +29,7 @@ std::string AnyNumberToReverse(long long num) {
     }
 }
 
-
-
-void InputValues1() {
-    long long number;
-    std::cout << "Please enter a integer number: ";
+void inputCheck (long long &number){
     while (true) {
             std::cin >> number;
             if (std::cin.fail()) {
@@ -47,6 +43,14 @@ void InputValues1() {
                 break;
             }
         }
+}
+
+
+
+void InputValues1() {
+    long long number;
+    std::cout << "Please enter a integer number: ";
+    inputCheck(number);
     
     std::string binaryRepresentation;
     binaryRepresentation = AnyNumberToReverse(number);
