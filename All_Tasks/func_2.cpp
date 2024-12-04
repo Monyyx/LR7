@@ -20,7 +20,6 @@ std::string toBinary(long long num) {
     return result;
 }
 
-
 std::string AnyNumberToReverse(long long num) {
     if (num >= 0)  return "0" + toBinary(num);
     else {
@@ -49,17 +48,14 @@ void inputCheck (long long &number){
 }
 
 
-
-
-
-
-
-
-
-
-std::string addBinary(std::string binaryFirst, std::string binarySecond) {
+std::string sumOfBinary(std::string binaryFirst, std::string binarySecond) {
     if (binarySecond.length() > binaryFirst.length()) {
         std::swap(binaryFirst, binarySecond);
+    }
+
+    // Align lengths by adding leading zeros
+    while (binarySecond.length() < binaryFirst.length()) {
+        binarySecond.insert(binarySecond.begin(), '0');
     }
 
     std::string result(binaryFirst.length() + 1, '0');
@@ -80,6 +76,34 @@ std::string addBinary(std::string binaryFirst, std::string binarySecond) {
     return result;
 }
 
+std::string checkAndAddOne(std::string binary) { 
+        if (!binary.empty() && binary[0] == '1') { 
+            std::string one = "1"; 
+            return sumOfBinary(binary, one); 
+            } 
+            return binary;
+        }
+
+// Функция для перевода из двоичного в десятичный код
+long long BinaryTo10(const std::string &result) {
+    size_t size = result.length();
+    std::string number = result;
+    long long num = 0;
+    if (result[1] == '1') {
+        reverse(number);
+        for (size_t i = 1; i < size; ++i) {
+            num += std::pow(2, size - i - 1) * (number[i] - '0');
+        }
+        num = -(num + 1);
+    } else {
+        for (size_t i = 1; i < size; ++i) {
+            num += std::pow(2, size - i - 1) * (number[i] - '0');
+        }
+    }
+    return num;
+}
+
+/*
 std::string sumOfBinary(std::string binaryFirst, std::string binarySecond){
 
     if (binarySecond.length() >  binaryFirst.length()) {
@@ -98,40 +122,21 @@ std::string checkAndAddOne(std::string binary) {
             return binary;
         }
 
-long long BinaryTo10 (std::string result){
+long long BinaryTo10 (std::string &result){
     size_t size = result.length();
     long long num = 0;
-
-    for (size_t i = size - 1; i > 1; --i) {
-        num += std::pow(2, size - i - 1) * (result[i] - '0');
-    }
-
-    if (result[1] == '1') {
-        return -num; 
+    if (result[0] == '1') {  // If the number is negative in one's complement
+        for (size_t i = 1; i < size; ++i) {
+            num += std::pow(2, size - i - 1) * (result[i] == '1' ? 0 : 1);  // Invert bits back
+        }
+        num = -(num + 1);  // Add one to get the negative number
     } else {
-        return num; 
+        for (size_t i = 1; i < size; ++i) {
+            num += std::pow(2, size - i - 1) * (result[i] - '0');
+        }
     }
-}
-
-    /*size_t size = result.length();
-    long long num = 0;
-
-    if (result[1] == '0'){
-        for(size_t i = size - 1; i > 1; --i){
-            num += std::pow(2,size - i - 1) * result[i] - '0';
-        }
-        return num;
-    } else 
-    {
-        for(size_t i = size - 1; i > 1; --i){
-            result[i] = (result[i] == '0') ? '1' : '0';
-        }
-        for(size_t i = size - 1; i > 1; --i){
-            num += std::pow(2,size - i - 1) * result[i] - '0';
-        }
-        return -num;
-    }*/
-
+    return num;
+}*/
 
 void ExplainTask2() {
     std::cout << "Perform the addition of numbers as per the given instructions. Develop functions to perform the addition operation.\n"

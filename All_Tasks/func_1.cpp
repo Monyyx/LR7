@@ -48,7 +48,8 @@ void inputCheck (long long &number){
 
 
 
-void InputValues1() {
+//void InputValues1()
+int main(){
     long long number;
     std::cout << "Please enter a integer number: ";
     inputCheck(number);
