@@ -9,7 +9,7 @@ void ExplainTask1();
 
 void InputValues1();
 
-void DisplayMenuTask();
+void DisplayMenuTask(); 
 
 std::string AnyNumberToReverse(long long num);
 

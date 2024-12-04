@@ -48,8 +48,7 @@ void inputCheck (long long &number){
 
 
 
-//void InputValues1()
-int main(){
+void InputValues1(){
     long long number;
     std::cout << "Please enter a integer number: ";
     inputCheck(number);
@@ -78,3 +77,4 @@ void DisplayMenuTask() {
               << "0. Exit\n"
               << "Choose an option: ";
 }
+

@@ -1,53 +1,6 @@
 #include "func_1.h"
 #include "func_2.h"
 
-
-void reverse (std::string &result) {
-    size_t size = result.length();
-    for (size_t i = 0; i < size / 2; ++i){
-        std::swap(result[i], result[size - 1 - i]);
-    }
-}
-
-std::string toBinary(long long num) {
-    if (num == 0) return "0";
-    std::string result;
-    while (num > 0) {
-        result += (num % 2 == 0 ? "0" : "1");
-        num /= 2;
-    }
-    reverse(result);
-    return result;
-}
-
-std::string AnyNumberToReverse(long long num) {
-    if (num >= 0)  return "0" + toBinary(num);
-    else {
-        std::string binary = toBinary(-num);
-        for(char &c : binary){
-            c = (c == '0') ? '1' : '0';
-        }
-        return "1" + binary;
-    }
-}
-
-void inputCheck (long long &number){
-    while (true) {
-            std::cin >> number;
-            if (std::cin.fail()) {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Invalid input. Please enter a valid integer: ";
-            } else if (std::cin.peek() != '\n') {
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Invalid input. Please enter a valid integer: ";
-            } else {
-                break;
-            }
-        }
-}
-
-
 std::string sumOfBinary(std::string binaryFirst, std::string binarySecond) {
     if (binarySecond.length() > binaryFirst.length()) {
         std::swap(binaryFirst, binarySecond);
@@ -73,43 +26,6 @@ std::string sumOfBinary(std::string binaryFirst, std::string binarySecond) {
     }
 
     result[0] = carry + '0';
-    return result;
-}
-
-std::string checkAndAddOne(std::string binary) { 
-        if (!binary.empty() && binary[0] == '1') { 
-            std::string one = "1"; 
-            return sumOfBinary(binary, one); 
-            } 
-            return binary;
-        }
-
-// Функция для перевода из двоичного в десятичный код
-long long BinaryTo10(const std::string &result) {
-    size_t size = result.length();
-    std::string number = result;
-    long long num = 0;
-    if (result[1] == '1') {
-        reverse(number);
-        for (size_t i = 1; i < size; ++i) {
-            num += std::pow(2, size - i - 1) * (number[i] - '0');
-        }
-        num = -(num + 1);
-    } else {
-        for (size_t i = 1; i < size; ++i) {
-            num += std::pow(2, size - i - 1) * (number[i] - '0');
-        }
-    }
-    return num;
-}
-
-/*
-std::string sumOfBinary(std::string binaryFirst, std::string binarySecond){
-
-    if (binarySecond.length() >  binaryFirst.length()) {
-        std::swap(binaryFirst, binarySecond);
-    }
-    std::string result = addBinary(binaryFirst, binarySecond);
     
     return result;
 }
@@ -122,21 +38,24 @@ std::string checkAndAddOne(std::string binary) {
             return binary;
         }
 
-long long BinaryTo10 (std::string &result){
+long long BinaryTo10(std::string &result, bool doublePlus) {
     size_t size = result.length();
     long long num = 0;
-    if (result[0] == '1') {  // If the number is negative in one's complement
-        for (size_t i = 1; i < size; ++i) {
-            num += std::pow(2, size - i - 1) * (result[i] == '1' ? 0 : 1);  // Invert bits back
+    if (result[1] == '1' && !doublePlus) {
+        for(char &c : result){
+            c = (c == '0') ? '1' : '0';
         }
-        num = -(num + 1);  // Add one to get the negative number
+        for (size_t i = 1; i < size; ++i) {
+            num += std::pow(2, size - i - 1) * (result[i] - '0');
+        }
+        num = -(num);
     } else {
         for (size_t i = 1; i < size; ++i) {
             num += std::pow(2, size - i - 1) * (result[i] - '0');
         }
     }
     return num;
-}*/
+}
 
 void ExplainTask2() {
     std::cout << "Perform the addition of numbers as per the given instructions. Develop functions to perform the addition operation.\n"
@@ -145,23 +64,21 @@ void ExplainTask2() {
               << "Express the answer in the natural form.\n";
 }
 
-//void InputValues2()i
-int main(){
+void InputValues2(){
     long long first, second;
     std::cout << "Please enter a first integer number: ";
     inputCheck(first);
     std::cout << "Please enter a second integer number: ";
     inputCheck(second);
+    bool doublePlus = (first > 0 && second > 0) ? true : false;
 
+    bool carryOut = false;
     std::string binaryFirst = AnyNumberToReverse(first);
     std::string binarySecond = AnyNumberToReverse(second);
     std::string result = sumOfBinary(binaryFirst, binarySecond);
 
     checkAndAddOne(result);
     std::cout << result << '\n';
-    long long normalNum = BinaryTo10(result);
+    long long normalNum = BinaryTo10(result, doublePlus);
     std::cout << "Result of summary of 2 numbers: " << normalNum;
-
-    
-return 0;
 }
