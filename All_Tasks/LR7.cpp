@@ -12,7 +12,6 @@ void WhatISIt() {
 }
 
 void Task_1(){
-
 int choice;
     do {
         DisplayMenuTask();
@@ -47,12 +46,9 @@ int choice;
         }
         std::cout << '\n';
     } while (choice != 0);
-
 }
 
-// TODO
 void Task_2(){
-
 int choice;
     do {
         DisplayMenuTask();
@@ -90,7 +86,6 @@ int choice;
 }
 
 void Task_3(){
-
 int choice;
     do {
         DisplayMenuTask();
@@ -110,13 +105,13 @@ int choice;
         
         switch (choice) {
             case 1:
-            //ExplainTask3();
+            ExplainTask3();
             break;
             case 2:
                 AuthorInfo();
             break;
             case 3:
-                //InputValue3();
+                InputValues3();
             break;
             case 0:
                 std::cout << "Exiting the program.\n";
@@ -129,8 +124,9 @@ int choice;
 
 }
 
-void Task_4(){
 
+// TODO
+void Task_4(){
 int choice;
     do {
         DisplayMenuTask();
@@ -169,8 +165,9 @@ int choice;
 
 }
 
-void Task_5(){
 
+// TODO
+void Task_5(){
 int choice;
     do {
         DisplayMenuTask();
