@@ -6,7 +6,6 @@ std::string sumOfBinary(std::string binaryFirst, std::string binarySecond) {
         std::swap(binaryFirst, binarySecond);
     }
 
-    // Align lengths by adding leading zeros
     while (binarySecond.length() < binaryFirst.length()) {
         binarySecond.insert(binarySecond.begin(), '0');
     }

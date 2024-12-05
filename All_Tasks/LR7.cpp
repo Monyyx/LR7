@@ -7,6 +7,9 @@
 #include "func_4.h"
 #include "func_5.h"
 
+
+// O() near all func O(func) > 1
+
 void WhatISIt() {
     std::cout << "Here you can check the whole LR7.\n";
 }
