@@ -18,7 +18,6 @@ std::string toBinary(long long num) {
     return result;
 }
 
-
 std::string AnyNumberToReverse(long long num) {
     if (num >= 0)  return "0" + toBinary(num);
     else {

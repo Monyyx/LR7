@@ -57,6 +57,7 @@ long long BinaryTo10(std::string &result, bool doublePlus) {
     return num;
 }
 
+
 void ExplainTask2() {
     std::cout << "Perform the addition of numbers as per the given instructions. Develop functions to perform the addition operation.\n"
               << "Ensure that the program handles both positive and negative numbers. The length of the input numbers is not limited.\n"
