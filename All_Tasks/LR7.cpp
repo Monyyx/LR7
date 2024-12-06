@@ -168,8 +168,6 @@ int choice;
 
 }
 
-
-// TODO
 void Task_5(){
 int choice;
     do {
@@ -189,13 +187,13 @@ int choice;
         }
         switch (choice) {
             case 1:
-            //ExplainTask5();
+            ExplainTask5();
             break;
             case 2:
             AuthorInfo();
             break;
             case 3:
-            //InputValue5();
+            InputValues5();
             break;
             case 0:
                 std::cout << "Exiting the program.\n";
@@ -227,7 +225,7 @@ int main() {
         DisplayMenu();
         while (true) {
             std::cin >> choice;
-            if (std::cin.fail() || choice < 0 || choice > 4) {
+            if (std::cin.fail() || choice < 0 || choice > 6) {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cout << "Invalid input. Please enter a valid option (0-6): ";
@@ -242,16 +240,18 @@ int main() {
             case 1:
                 WhatISIt();
                 break;
-            case 2:
+                case 2:
                 Task_1();
                 break;
-            case 3:
+                case 3:
                 Task_2();
                 break;
                 case 4:
                 Task_3();
+                break;
                 case 5:
                 Task_4();
+                break;
                 case 6:
                 Task_5();
                 break;

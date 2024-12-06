@@ -114,6 +114,8 @@ void InputValues5() {
 
     //int number = findingBarrel(slaves, barrels, toxicIN3);
     //std::cout << "The number of the poisoned barrel: " << number;
-    
-    std::cout << "Result: " << findingBarrel << " barrel - " << number;
+    if(findingBarrel){
+    std::cout << "Result: barrel - " << number;
+    } else std::cout << "Unlack/";
+
 }
