@@ -1,28 +1,41 @@
 #include "func_5.h"
 
+void reverse (std::string &result) {
+    size_t size = result.length();
+    for (size_t i = 0; i < size / 2; ++i){
+        std::swap(result[i], result[size - 1 - i]);
+    }
+}
+
 std::string toTernary(int num) {
         std::string ternary;
         while (num > 0) {
             ternary.push_back('0' + (num % 3));
             num /= 3;
         }
+        while(ternary.length() < 5){
+            ternary.push_back('0');
+        }
+        reverse(ternary);
         return ternary;
     }
 
-bool findingBarrel(std::string &slaves, int *barrels,std::string toxic, int numBarrels = 240, int numSlaves = 5){
+/*bool findingBarrel(std::string &slaves, int *barrels,std::string toxic, int numBarrels = 240, int numSlaves = 5){
     for (int digit = 0; digit < 2; ++digit) {
-        /* TODO git branch
+        std::cout << "After " << digit + 1 << " days:\n";
+
+        for(int j = 0; j < numSlaves; ++j){
         for (int i = 0; i < numBarrels; ++i) {
-            if (barrels[i] == 0) {
-                std::cout << "Slave " << digit + 1 << " drinks from a barrel: " << barrels[i] << '\n';
+            std::string drinkBarrel = toTernary(barrels[i]);
+            if (drinkBarrel[j] == digit) {
+                std::cout << "Slave " << j + 1 << " drinks from a barrel: " << barrels[i] << '\n';
             }
         }
-        for (int i = 0; i < numSlaves; ++i) {
-            std::cout << "Slave " << i + 1 << " live? (1-yes, 0-nope): ";
+            std::cout << "Slave " << j + 1 << " live? (1-yes, 0-nope): ";
             int alive;
             while (true) {
             std::cin >> alive;
-            if (std::cin.fail() || alive != 1 || alive != 0) {
+            if (std::cin.fail() || (alive != 1 && alive != 0)) {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cout << "Invalid input. Please enter a valid integer: ";
@@ -32,44 +45,85 @@ bool findingBarrel(std::string &slaves, int *barrels,std::string toxic, int numB
             } else {
                 break;
             }
-        }
+
             if (alive == 0) {
-                slaves[i] = digit;
+                slaves[j] = digit;
             }
-        }*/
-        // day 1 
-        for(size_t i = 0; i < numSlaves; ++i){
-            if(toxic[i] == '0') slaves[i] == 0;
         }
-        //day 2 
-        for(size_t i = 0; i < numSlaves; ++i){
-            if(toxic[i] == '1') slaves[i] == 1;
         }
-        //final
-        for(size_t i = 0; i < numSlaves; ++i){
-            if(toxic[i] == -1) slaves[i] == 2;
+    bool allDead = true;
+
+    for (char slave : slaves) {
+        if (slave == -1) {
+            allDead = false;
+            break;
+            }
+        }
+    if (allDead) {
+        break;
+    }
+}
+
+    int number  = 0;
+    for(size_t i = 0; i < numSlaves; ++i){
+        if(slaves[i] == -1) slaves[i] == 2;
+        number += (slaves[i] - '0') * std::pow(10, i);
+    }
+
+    return slaves == (toxic);
+}*/
+bool findingBarrel(std::string &slaves, int *barrels, std::string toxic, int numBarrels = 240, int numSlaves = 5) {
+    for (int digit = 0; digit < 2; ++digit) {
+        std::cout << "After " << digit + 1 << " days:\n";
+
+        for (int j = 0; j < numSlaves; ++j) {
+            if(slaves[j] != digit && slaves[j] == -1) {
+                std::cout << "Slave " << j + 1 << " drinks from barrels: \n";
+                for (int i = 0; i < numBarrels; ++i) {
+                    std::string drinkBarrel = toTernary(barrels[i]);
+                    if (drinkBarrel[j] == digit + '0') {
+                        std::cout << barrels[i] << '\n';
+                    }
+                }
+                std::cout << '\n';
+                std::cout << "Slave " << j + 1 << " live? (1-yes, 0-nope): ";
+                int alive;
+                std::cin >> alive;
+
+                while (std::cin.fail() || (alive != 1 && alive != 0)) {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Invalid input. Please enter a valid integer (1-yes, 0-nope): ";
+                    std::cin >> alive;
+                }
+                if (alive == 0) {
+                    slaves[j] = digit + '0';
+                }
+            }
         }
 
-        /*bool allDead = true;
-        for (int i = 0; i < numSlaves; ++i) {
-            if (slaves[i] == -1) {
+        bool allDead = true;
+        for (char slave : slaves) {
+            if (slave == -1) {
                 allDead = false;
                 break;
             }
         }
         if (allDead) {
             break;
-        }*/
+        }
     }
 
-    int number  = 0;
-    for(size_t i = 0; i < numSlaves; ++i){
-        if(slaves[i] == -1) slaves[i] == 2;
-        number += slaves[i] * 10 * (i + 1);
+    int number = 0;
+    for (size_t i = 0; i < numSlaves; ++i) {
+        if (slaves[i] == -1) slaves[i] = '2';
+        number += (slaves[i] - '0') * (pow(10, i));
     }
 
-    return slaves == (toxic);
+    //return slaves == toxic;
 }
+
+
 
 void ExplainTask5() {
     std::cout << "Patrician decided to hold a feast and prepared 240 barrels of wine.\n"
@@ -83,16 +137,16 @@ void ExplainTask5() {
               << "slaves testing the wine for poison.\n";
 }
 
-void InputValues5() {
+//void InputValues5()
+int main() {
     int numBarrels = 240;
     int numSlaves = 5;
     int barrels[numBarrels];
-    int number = 0;
     int toxic = 0;
     std::cout  << "Enter the toxic barrel : ";
     while (true) {
-            std::cin >> number;
-            if (std::cin.fail() || number <= 0 || number > 240) {
+            std::cin >> toxic;
+            if (std::cin.fail() || toxic <= 0 || toxic > 240) {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cout << "Invalid input. Please enter a valid integer: ";
@@ -103,18 +157,17 @@ void InputValues5() {
                 break;
             }
         }
-    std::string toxicIN3 = toTernary(toxic);
-
+    std::string toxicIN3{5,0};
 
     for (int i = 0; i < numBarrels; ++i) {
-        std::string temp = toTernary(i + 1);
-        barrels[i] = std::stoi(temp);
+        barrels[i] = i + 1;
     }
     std::string slaves(numSlaves, -1);
 
-    //int number = findingBarrel(slaves, barrels, toxicIN3);
-    //std::cout << "The number of the poisoned barrel: " << number;
-    if(findingBarrel){
-    std::cout << "Result: barrel - " << number;
-    } else std::cout << "Unluck/";
+    if(findingBarrel(slaves, barrels, toxicIN3)){
+    std::cout << "The number of the poisoned barrel: " << toxic;
+    } else std::cout << ".";
+    //if (lazyFindingBarrel(slaves, toxicIN3)) {
+     //   std::cout << "Result: barrel - " << toxic;
+    //} else  std::cout << "Unluck/";
 }

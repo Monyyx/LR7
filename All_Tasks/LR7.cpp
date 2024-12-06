@@ -8,7 +8,7 @@
 #include "func_5.h"
 
 
-// O() near all func O(func) > 1
+// O() near all func O(func) > 1 << do in headers /:
 
 void WhatISIt() {
     std::cout << "Here you can check the whole LR7.\n";
@@ -127,8 +127,6 @@ int choice;
 
 }
 
-
-// TODO
 void Task_4(){
 int choice;
     do {
@@ -149,13 +147,13 @@ int choice;
         
         switch (choice) {
             case 1:
-            //ExplainTask4();
+            ExplainTask4();
             break;
             case 2:
                 AuthorInfo();
             break;
             case 3:
-                //InputValue4();
+                InputValues4();
             break;
             case 0:
                 std::cout << "Exiting the program.\n";

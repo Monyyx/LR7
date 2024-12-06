@@ -8,7 +8,7 @@ bool isDivisible(long long number, long long prime){
     return number == 0;
 }
 
-void InputValues5(){
+void InputValues4(){
     long long number, prime;
     std::cout << "Enter ypur number : ";
     inputCheck(number);
@@ -22,7 +22,7 @@ void InputValues5(){
     std::cout << number << '\n' << ~number;
 }
 
-void ExplainTask5(){
+void ExplainTask4(){
     std::cout << "It is necessary to develop a program that checks\n"
               << "whether the number entered by the user is divisible by a given prime.\n" 
               << "Banned operations: multiplication, division, and subtraction (including\n" 

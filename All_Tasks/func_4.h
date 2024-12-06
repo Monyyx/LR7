@@ -4,6 +4,6 @@
 
 void ExplainTask4();
 
-void InputValues5();
+void InputValues4();
 
 bool isDivisible(long long number, long long prime);

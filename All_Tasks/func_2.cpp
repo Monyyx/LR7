@@ -76,7 +76,6 @@ void InputValues2(){
     std::string result = sumOfBinary(binaryFirst, binarySecond);
 
     checkAndAddOne(result);
-    std::cout << result << '\n';
     long long normalNum = BinaryTo10(result, doublePlus);
     std::cout << "Result of summary of 2 numbers: " << normalNum;
 }

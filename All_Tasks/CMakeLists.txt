@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10ё)
+cmake_minimum_required(VERSION 3.10)
 project(LR7)
 
 set(CMAKE_CXX_STANDARD 20)
