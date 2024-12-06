@@ -3,7 +3,7 @@
 std::string toTernary(int num) {
         std::string ternary;
         while (num > 0) {
-            ternary.push_back(num % 3);
+            ternary.push_back('0' + (num % 3));
             num /= 3;
         }
         return ternary;
@@ -83,8 +83,7 @@ void ExplainTask5() {
               << "slaves testing the wine for poison.\n";
 }
 
-//void InputValues5()
-int main(){
+void InputValues5() {
     int numBarrels = 240;
     int numSlaves = 5;
     int barrels[numBarrels];
@@ -116,8 +115,5 @@ int main(){
     //int number = findingBarrel(slaves, barrels, toxicIN3);
     //std::cout << "The number of the poisoned barrel: " << number;
     
-    std::cout << "Result: " << findingBarrel << " berrel - " << toxic;
-
-    return 0;
+    std::cout << "Result: " << findingBarrel << " barrel - " << number;
 }
-
