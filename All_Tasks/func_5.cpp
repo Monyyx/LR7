@@ -116,6 +116,5 @@ void InputValues5() {
     //std::cout << "The number of the poisoned barrel: " << number;
     if(findingBarrel){
     std::cout << "Result: barrel - " << number;
-    } else std::cout << "Unlack/";
-
+    } else std::cout << "Unluck/";
 }

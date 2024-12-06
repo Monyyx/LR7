@@ -29,7 +29,7 @@ std::string AnyNumberToReverse(long long num) {
     }
 }
 
-void inputCheck (long long &number){
+void inputCheck (auto &number){
     while (true) {
             std::cin >> number;
             if (std::cin.fail()) {

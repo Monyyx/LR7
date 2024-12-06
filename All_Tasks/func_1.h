@@ -13,6 +13,6 @@ void DisplayMenuTask();
 
 std::string AnyNumberToReverse(long long num);
 
-void inputCheck (long long &number);
+void inputCheck (auto &number);
 
 void reverse (std::string &result);
