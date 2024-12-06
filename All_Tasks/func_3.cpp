@@ -1,27 +1,27 @@
 #include "func_3.h"
 
-std::string toUpperCase(std::string& str) {
+std::string toUpperCase(std::string& str) {// O(n)
     for(char &c : str){
         if('a' <= c && 'z' >= c) c = 'A' + c - 'a'; // Ручной цикл для преобразования
     }
     return str;
 }
 
-bool isAlpha(char c) {
+bool isAlpha(char c) {// 0
     return ('A' <= c && c <= 'Z') || ('a' <= c && 'z' >= c);
 }
 
-bool isDigit(char c) {
+bool isDigit(char c) {// 0(1)
     return '0' <= c && c <= '9';
 }
 
-int charToValue(char c) {
+int charToValue(char c) {// 0(1)
     if ('0' <= c && c <= '9') return c - '0';
     else if ('A' <= c && 'Z' >= c) return c - 'A' + 10;
     return -1; 
 }
 
-char valueToChar(int value) {
+char valueToChar(int value) {// 0(1)
     if (0 <= value && value <= 9) return '0' + value;
     else if (10 <= value < 36) return 'A' + value - 10;
     return '?'; 
@@ -40,7 +40,7 @@ bool isValidNumber(std::string& number, int base) {
 
 std::string addNumbers(int base, std::string num1, std::string num2);
 
-std::string subtractNumbers(int base, std::string num1, std::string num2) {
+std::string subtractNumbers(int base, std::string num1, std::string num2) {// O(n)
     bool neg1 = (num1[0] == '-'), neg2 = (num2[0] == '-');
     if (neg1) num1 = num1.substr(1);
     if (neg2) num2 = num2.substr(1);
@@ -78,7 +78,7 @@ std::string subtractNumbers(int base, std::string num1, std::string num2) {
     return result;
 }
 
-std::string addNumbers(int base, std::string num1, std::string num2) {
+std::string addNumbers(int base, std::string num1, std::string num2) {// O(n)
     bool neg1 = (num1[0] == '-'), neg2 = (num2[0] == '-');
     if (neg1) num1 = num1.substr(1);
     if (neg2) num2 = num2.substr(1);
@@ -103,7 +103,7 @@ std::string addNumbers(int base, std::string num1, std::string num2) {
     return result;
 }
 
-void performOperation(int base, std::string num1, std::string num2, char op) {
+void performOperation(int base, std::string num1, std::string num2, char op) {// O(n)
     std::string result;
     if (op == '+') {
         result = addNumbers(base, num1, num2);
@@ -116,14 +116,14 @@ void performOperation(int base, std::string num1, std::string num2, char op) {
     std::cout << "Result: " << result << "\n";
 }
 
-void ExplainTask3() {
+void ExplainTask3() { // O(1)
     std::cout << "The user inputs the base of the numeral system. Perform addition and subtraction of numbers in the given numeral system.\n"
               << "Do not convert to another numeral system. For numeral systems larger than decimal, use letters similar to the hexadecimal system.\n"
               << "Develop functions to perform the addition operation and functions to perform the subtraction operation.\n"
               << "Ensure the input of both positive and negative numbers.\n";
 }
 
-void InputValues3(){
+void InputValues3(){// O(n)
     int numberSystem = 0;
     std::cout << "Enter your number system: ";
     while (true) {

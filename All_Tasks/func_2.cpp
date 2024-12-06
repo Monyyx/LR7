@@ -1,7 +1,7 @@
 #include "func_1.h"
 #include "func_2.h"
 
-std::string sumOfBinary(std::string &binaryFirst, std::string &binarySecond) {
+std::string sumOfBinary(std::string &binaryFirst, std::string &binarySecond) { // O(n)
     if (binarySecond.length() > binaryFirst.length()) {
         std::swap(binaryFirst, binarySecond);
     }
@@ -29,7 +29,7 @@ std::string sumOfBinary(std::string &binaryFirst, std::string &binarySecond) {
     return result;
 }
 
-std::string checkAndAddOne(std::string binary) { 
+std::string checkAndAddOne(std::string binary) { // O(n)
         if (!binary.empty() && binary[0] == '1') { 
             std::string one = "1"; 
             return sumOfBinary(binary, one); 
@@ -37,7 +37,7 @@ std::string checkAndAddOne(std::string binary) {
             return binary;
         }
 
-long long BinaryTo10(std::string &result, bool doublePlus) {
+long long BinaryTo10(std::string &result, bool doublePlus) {// O(n)
     size_t size = result.length();
     long long num = 0;
     if (result[1] == '1' && !doublePlus) {
@@ -57,12 +57,12 @@ long long BinaryTo10(std::string &result, bool doublePlus) {
 }
 
 
-void ExplainTask2() {
+void ExplainTask2() {// O(1)
     std::cout << "Find the sum of the binary numbers given in their natural form. Perform the addition in ones' complement form.\n"
               << "Express the answer in the natural form.\n";
 }
 
-void InputValues2(){
+void InputValues2(){// O(log(n))
     long long first, second;
     std::cout << "Please enter a first integer number: ";
     inputCheck(first);

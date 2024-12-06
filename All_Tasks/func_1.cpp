@@ -1,13 +1,13 @@
 #include "func_1.h"
 
-void reverse (std::string &result) {
+void reverse (std::string &result) {// O(n)
     size_t size = result.length();
     for (size_t i = 0; i < size / 2; ++i){
         std::swap(result[i], result[size - 1 - i]);
     }
 }
 
-std::string toBinary(long long num) {
+std::string toBinary(long long num) {// O(log(n))
     if (num == 0) return "0";
     std::string result;
     while (num > 0) {
@@ -18,7 +18,7 @@ std::string toBinary(long long num) {
     return result;
 }
 
-std::string AnyNumberToReverse(long long num) {
+std::string AnyNumberToReverse(long long num) {// O(log(n))
     if (num >= 0)  return "0" + toBinary(num);
     else {
         std::string binary = toBinary(-num);
@@ -45,8 +45,7 @@ void inputCheck (auto &number){
         }
 }
 
-
-void InputValues1(){
+void InputValues1(){// O(log(n))
     long long number;
     std::cout << "Please enter a integer number: ";
     inputCheck(number);
@@ -57,17 +56,17 @@ void InputValues1(){
     std::cout << "Binary representation of your number is: " << binaryRepresentation << std::endl;
 }
 
-void AuthorInfo() {
+void AuthorInfo() { // O(1)
     std::cout << "Completed by: Matvei Khadorik\n";
 }
 
-void ExplainTask1() {
+void ExplainTask1() {// O(1)
     std::cout << "You are given a number in its natural form. Convert this number to its ones' complement form (invert all bits).\n"
               << "Ensure that the program handles both positive and negative numbers. The length of the number is not limited.\n";
 
 }
 
-void DisplayMenuTask() {
+void DisplayMenuTask() { // O(1)
     std::cout << "--- Context menu ---\n"
               << "1. Task description\n"
               << "2. Author information\n"
